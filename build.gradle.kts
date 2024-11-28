@@ -12,19 +12,23 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    maven("https://packages.jetbrains.team/maven/p/kds/kotlin-ds-maven")
     google()
 }
 
 
 dependencies {
     val jsoup: String by project
-    // Note, if you develop a library, you should use compose.desktop.common.
-    // compose.desktop.currentOs should be used in launcher-sourceSet
-    // (in a separate module for demo project and in testMain).
-    // With compose.desktop.common you will also lose @Preview functionality
+    val dataframe: String by project
+    val kandy: String by project
+    val statistics: String by project
+
     implementation(compose.desktop.currentOs)
     implementation(compose.material3)
     implementation("org.jsoup:jsoup:$jsoup")
+    implementation("org.jetbrains.kotlinx:dataframe-core:$dataframe")
+    implementation("org.jetbrains.kotlinx:kandy-lets-plot:$kandy")
+    implementation("org.jetbrains.kotlinx:kotlin-statistics-jvm:$statistics")
 }
 
 compose.desktop {
